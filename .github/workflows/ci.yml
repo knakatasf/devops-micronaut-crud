@@ -13,16 +13,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Docker Buildx
+      - name: Set up Docker
         uses: docker/setup-buildx-action@v2
 
-      - name: Set up Docker Compose
+      - name: Set up Docker compose
         run: sudo apt-get install docker-compose
 
-      - name: Start Services
+      - name: Docker compose up
         run: docker-compose up -d
 
       - name: Set up JDK 21
@@ -31,9 +31,20 @@ jobs:
           distribution: temurin
           java-version: 21
 
-      - name: Build and Test
+      - name: Build and test
         run: ./gradlew clean build
 
-      - name: Stop and Remove Services
+      - name: Stop and remove services
         if: always()
         run: docker-compose down
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: micronaut-crud-app-jar
+          path: build/libs/*.jar
+
+      - name: Upload to GitHub Packages
+        run: ./gradlew publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
