@@ -41,7 +41,7 @@ jobs:
           path: build/libs/*.jar
 
       - name: Publish package
-        run: ./gradlew publish
+        run: ./gradlew publish --warning-mode all
         env:
           TOKEN: ${{ secrets.TOKEN }}
 
