@@ -6,8 +6,8 @@ plugins {
     id("maven-publish")
 }
 
-version = "0.1"
-group = "com.piyal"
+version = "0.1.2"
+group = "com.koichi"
 
 repositories {
     mavenCentral()
