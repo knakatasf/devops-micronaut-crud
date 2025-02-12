@@ -41,9 +41,10 @@ jobs:
           path: build/libs/*.jar
 
       - name: Publish package
-        run: ./gradlew publish --warning-mode all
+        run: ./gradlew publish
         env:
-          TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_USERNAME: knakatasf
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       - name: Stop and remove services
         if: always()

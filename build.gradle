@@ -79,8 +79,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://github.com/knakatasf/devops-micronaut-crud")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                username = System.getenv("GITHUB_USERNAME") ?: "knakatasf"
+                password = System.getenv("GITHUB_TOKEN") ?: ""
             }
         }
     }
