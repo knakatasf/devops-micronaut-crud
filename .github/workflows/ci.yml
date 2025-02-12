@@ -43,7 +43,7 @@ jobs:
       - name: Publish package
         run: ./gradlew publish
         env:
-          GITHUB_USERNAME: knakatasf
+          GITHUB_USERNAME: ${{ secrets.USERNAME }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
 
       - name: Stop and remove services

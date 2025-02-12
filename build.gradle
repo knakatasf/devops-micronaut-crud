@@ -6,7 +6,7 @@ plugins {
     id("maven-publish")
 }
 
-version = "0.1"
+version = "0.1.2"
 group = "com.piyal"
 
 repositories {
@@ -79,7 +79,7 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/knakatasf/devops-micronaut-crud")
             credentials {
-                username = System.getenv("GITHUB_USERNAME") ?: "knakatasf"
+                username = System.getenv("GITHUB_USERNAME") ?: ""
                 password = System.getenv("GITHUB_TOKEN") ?: ""
             }
         }
