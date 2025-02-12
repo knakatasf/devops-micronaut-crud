@@ -1,3 +1,5 @@
+import io.github.cdimascio.dotenv.Dotenv
+
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.4.2"
@@ -72,5 +74,25 @@ tasks.named("dockerfileNative") {
     jdkVersion = "21"
 }
 
+plugins {
+    id("maven-publish")
+}
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://github.com/knakatasf/devops-micronaut-crud")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
 
 
