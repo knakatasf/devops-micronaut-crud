@@ -1,10 +1,9 @@
-import io.github.cdimascio.dotenv.Dotenv
-
 plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.4.2"
     id("io.micronaut.test-resources") version "4.4.2"
     id("io.micronaut.aot") version "4.4.2"
+    id("maven-publish")
 }
 
 version = "0.1"
@@ -74,9 +73,6 @@ tasks.named("dockerfileNative") {
     jdkVersion = "21"
 }
 
-plugins {
-    id("maven-publish")
-}
 publishing {
     repositories {
         maven {
