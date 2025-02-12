@@ -35,7 +35,7 @@ jobs:
         run: ./gradlew clean build
 
       - name: Publish package
-        run: ./gradlew publish　--stacktrace --info
+        run: ./gradlew publish
         env:
           GITHUB_USERNAME: ${{ secrets.GITHUB_USERNAME }}
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
